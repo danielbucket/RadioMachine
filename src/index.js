@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import * as serviceWorker from './utils/serviceWorker';
-import { colorMode } from './utils/colorMode';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<App colorMode={colorMode} />, document.getElementById('root'));

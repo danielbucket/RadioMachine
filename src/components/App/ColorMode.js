@@ -1,5 +1,4 @@
-import styled, { ThemeProvider } from 'styled-components';
-import { pallette } from './pallette';
+import styled from 'styled-components';
 
 const ColorMode = styled.div`
 			font-size: 2em;

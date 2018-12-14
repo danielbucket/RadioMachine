@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VolumeDisplay from '../VolumeDisplay';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { theme } from '../style/theme';
 import ColorMode from './ColorMode';
 import ColorModeSelector from '../ColorModeSelector';

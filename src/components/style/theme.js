@@ -7,6 +7,6 @@ export const theme = {
   lightMode: {
   	color: '#282c33',
   	background: '#dcdfe5',
-  	border: '#282c33',
+  	border: '#ff9422',
   },
 };
