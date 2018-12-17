@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
-import { container } from './volumeDisplayCSS';
 import VolumeKnob from './VolumeKnob';
+import { VolumeDisplayStyle } from './VolumeDisplayStyle';
 
 class VolumeDisplay extends Component {
 	constructor(props) {
@@ -9,25 +8,20 @@ class VolumeDisplay extends Component {
 		this.state = {
 			maxVolume: 10,
 			minVolume: -10,
-			volumeLevel: 0,
+			currentVolume: -3,
 		};
 	};
 
-
-
 	render() {
-		const { volumeLevel } = this.state;
-		// const style = Object.assign(colorMode, container);
+		const { currentVolume } = this.state;
 
 		return (
-			<section>
-				<div>
-					Volume:
+			<VolumeDisplayStyle>
+				<div className="volume">
+					Volume:<span className="vol-span">{ currentVolume }</span>
 				</div>
-				<div>
-					<VolumeKnob volumeLevel={ volumeLevel } />
-				</div>
-			</section>
+				<VolumeKnob />
+			</VolumeDisplayStyle>
 		);
 	};
 };

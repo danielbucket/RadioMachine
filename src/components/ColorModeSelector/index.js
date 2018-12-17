@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
-import ColorModeButtonStyle from './ColorModeButtonStyle';
+import React from 'react';
+import { ColorModeButtonStyle } from './ColorModeButtonStyle';
 
 export const ColorModeSelector = props => {
+	const value = props.colorMode ? 'Light Mode' : 'Dark Mode';
+
 	return (
 		<div>
 			<ColorModeButtonStyle 
-					value='lightMode'
-	        onClick={(i) => props.setColorMode(i)}>
-		    LightMode
-      </ColorModeButtonStyle>
-			<ColorModeButtonStyle 
-					value='darkMode'
-	        onClick={(i) => props.setColorMode(i)}>
-		    DarkMode
+	        onClick={() => props.setColorMode()}>
+		    {value}
       </ColorModeButtonStyle>
     </div>
 	)
 };
-
-
-
 
 export default ColorModeSelector;

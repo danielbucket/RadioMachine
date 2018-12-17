@@ -1,40 +1,42 @@
 import React, { Component } from 'react';
 import VolumeDisplay from '../VolumeDisplay';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../style/theme';
+import { theme } from '../globalStyles/theme';
+import { GlobalStyle } from '../globalStyles/GlobalStyle';
 import ColorMode from './ColorMode';
 import ColorModeSelector from '../ColorModeSelector';
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state={
-      colorModeStyle: 'lightMode',
+    this.state = {
+      colorMode: true,
     };
 
     this.setColorMode = this.setColorMode.bind(this);
   };
 
-  setColorMode(i) {
-    const selection = i.target.value;
-    this.setState({
-      colorModeStyle:selection
-    });
+  setColorMode() {
+    const colorModeValue = !this.state.colorMode;
+
+    this.setState({ colorMode:colorModeValue });
   };
 
-
   render() {
-    const { colorModeStyle } = this.state;
+    const { colorMode } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
-        <ColorMode colorModeStyle={colorModeStyle}>
+        <ColorMode colorMode={colorMode}>
           <VolumeDisplay />
-          <ColorModeSelector setColorMode={this.setColorMode}/>
+          <ColorModeSelector setColorMode={this.setColorMode}
+                                colorMode={!colorMode}/>
+
+        <GlobalStyle />
         </ColorMode>
       </ThemeProvider>
     );
-  }
-}
+  };
+};
 
 export default App;

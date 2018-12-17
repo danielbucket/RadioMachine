@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import VolumeKnobStyle from './VolumeKnobStyle';
 
-class VolumeKnob extends Component {
-	render() {
-	const { volumeLevel } = this.props;
+const VolumeKnob = props => {
 
-	return(
-		<div>
-			<div>
-				{ volumeLevel }
-			</div>
-		</div>
-		);
-	};
+	return (
+		<VolumeKnobStyle>
+		</VolumeKnobStyle>
+	);
 };
 
 export default VolumeKnob;
