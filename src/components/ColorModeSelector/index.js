@@ -1,14 +1,14 @@
 import React from 'react';
-import ColorModeButtonStyle from './ColorModeButtonStyle';
+import ColorModeSelectorStyle from './ColorModeSelectorStyle';
 
 export const ColorModeSelector = props => {
 	const value = props.colorMode ? 'Dark Mode' : 'Light Mode';
 
 	return (
-		<ColorModeButtonStyle 
+		<ColorModeSelectorStyle 
         onClick={() => props.setColorMode()}>
       <span className="volume-level-text">{value}</span>
-    </ColorModeButtonStyle>
+    </ColorModeSelectorStyle>
 	)
 };
 

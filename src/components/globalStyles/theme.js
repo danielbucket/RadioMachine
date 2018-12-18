@@ -1,6 +1,6 @@
 export const theme = {
   darkMode: {
-    fontColor: '#dcdfe5',
+    fontColor: '#a8b3ca',
     background: '#282c33',
     borderColor: '#1282e6', //BLUE
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import VolumeKnob from './VolumeKnob';
 import { VolumeDisplayStyle } from './VolumeDisplayStyle';
 
 class VolumeDisplay extends Component {
@@ -18,7 +17,6 @@ class VolumeDisplay extends Component {
 		return (
 			<VolumeDisplayStyle>
 				Volume:<span className="volume-value-text">{currentVolume}</span>
-				<VolumeKnob />
 			</VolumeDisplayStyle>
 		);
 	};

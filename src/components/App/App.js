@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import VolumeDisplay from '../VolumeDisplay';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../globalStyles/theme';
 import { GlobalStyle } from '../globalStyles/GlobalStyle';
 import { AppStyle } from './AppStyle';
 import ColorModeSelector from '../ColorModeSelector';
+import RadioMachine from '../RadioMachine';
 
 class App extends Component {
   constructor(props) {
@@ -38,8 +38,9 @@ class App extends Component {
     return (
       <ThemeProvider theme={colorScheme}>
         <AppStyle>
-          <VolumeDisplay />
-
+        <header>
+        </header>
+          <RadioMachine />
           <footer className="footer">
             <ColorModeSelector setColorMode={this.setColorMode}
                                   colorMode={colorMode}/>

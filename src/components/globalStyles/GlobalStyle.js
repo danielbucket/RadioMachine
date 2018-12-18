@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		outline: none;
 		height: 100%;
+		grid-gap: .5em;
 	}
 
 	body {}
