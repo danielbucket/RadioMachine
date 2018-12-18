@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
-export const ColorModeButtonStyle = styled.button`
-	background: ${props => props.theme.colorMode ? props.theme.darkBG : props.theme.lightBG};
-	color: ${props => props.theme.colorMode ? props.theme.darkFont : props.theme.lightFont};
-  border: 2px solid ${props => props.theme.colorMode ? props.theme.darkBorder : props.theme.lightBorder};
-  border-radius: 10px;
-  width: 50%;
+const ColorModeButtonStyle = styled.button`
+	grid-column: 1 / 1;
 
+	background: ${p => p.theme.background};
+	color: ${p => p.theme.fontColor};
+  border: .1em solid ${p => p.theme.borderColor};
+  border-radius: ${p => p.theme.borderRadius};
+  width: 100%;
+  height: 100%;
+  font-size: 2em;  
 `;
 
-ColorModeButtonStyle.defaultProps = {
-  theme: {
-    main: '#282c33',
-  }
-};
+export default ColorModeButtonStyle;

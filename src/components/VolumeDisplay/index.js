@@ -17,9 +17,7 @@ class VolumeDisplay extends Component {
 
 		return (
 			<VolumeDisplayStyle>
-				<div className="volume">
-					Volume:<span className="vol-span">{ currentVolume }</span>
-				</div>
+				Volume:<span className="volume-value-text">{currentVolume}</span>
 				<VolumeKnob />
 			</VolumeDisplayStyle>
 		);

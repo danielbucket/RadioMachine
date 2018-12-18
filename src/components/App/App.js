@@ -3,7 +3,7 @@ import VolumeDisplay from '../VolumeDisplay';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../globalStyles/theme';
 import { GlobalStyle } from '../globalStyles/GlobalStyle';
-import ColorMode from './ColorMode';
+import { AppStyle } from './AppStyle';
 import ColorModeSelector from '../ColorModeSelector';
 
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
     };
 
     this.setColorMode = this.setColorMode.bind(this);
+    this.setColorScheme = this.setColorScheme.bind(this);
   };
 
   setColorMode() {
@@ -22,18 +23,29 @@ class App extends Component {
     this.setState({ colorMode:colorModeValue });
   };
 
+  setColorScheme(theme) {
+    if (this.state.colorMode) {
+      return Object.assign({},theme.darkMode, theme.defaultStyles);
+    };
+
+    return Object.assign({},theme.lightMode, theme.defaultStyles);
+  };
+
   render() {
     const { colorMode } = this.state;
+    const colorScheme = this.setColorScheme(theme)
 
     return (
-      <ThemeProvider theme={theme}>
-        <ColorMode colorMode={colorMode}>
+      <ThemeProvider theme={colorScheme}>
+        <AppStyle>
           <VolumeDisplay />
-          <ColorModeSelector setColorMode={this.setColorMode}
-                                colorMode={!colorMode}/>
 
+          <footer className="footer">
+            <ColorModeSelector setColorMode={this.setColorMode}
+                                  colorMode={colorMode}/>
+          </footer>
         <GlobalStyle />
-        </ColorMode>
+        </AppStyle>
       </ThemeProvider>
     );
   };
