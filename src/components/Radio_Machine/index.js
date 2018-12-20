@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../globalStyles/theme';
 import { GlobalStyle } from '../globalStyles/GlobalStyle';
-import { AppStyle } from './AppStyle';
+import { Radio_MachineStyle } from './Radio_MachineStyle';
 import ColorModeSelector from '../ColorModeSelector';
-import RadioMachine from '../RadioMachine';
+import RadioDeck  from '../RadioDeck';
+import Speaker from '../Speaker';
 
-class App extends Component {
+class Radio_Machine extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -37,19 +38,28 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={colorScheme}>
-        <AppStyle>
-        <header>
-        </header>
-          <RadioMachine />
+        <Radio_MachineStyle>
+          <header>header</header>
+            <Speaker position="speakerR"/>
+            <RadioDeck />
+            <Speaker position="speakerL"/>
+
+          <div className="partition"></div>
           <footer className="footer">
+            <ColorModeSelector setColorMode={this.setColorMode}
+                                  colorMode={colorMode}/>
+            <ColorModeSelector setColorMode={this.setColorMode}
+                                  colorMode={colorMode}/>
+            <ColorModeSelector setColorMode={this.setColorMode}
+                                  colorMode={colorMode}/>
             <ColorModeSelector setColorMode={this.setColorMode}
                                   colorMode={colorMode}/>
           </footer>
         <GlobalStyle />
-        </AppStyle>
+        </Radio_MachineStyle>
       </ThemeProvider>
     );
   };
 };
 
-export default App;
+export default Radio_Machine;

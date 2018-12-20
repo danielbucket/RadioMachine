@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const ColorModeSelectorStyle = styled.button`
-	grid-column: 1 / 1;
+export const ColorModeSelectorStyle = styled.button`
+
 
 	background: ${p=>p.theme.background};
 	color: ${p=>p.theme.fontColor};
@@ -10,5 +10,3 @@ const ColorModeSelectorStyle = styled.button`
   font-size: 1.5em;
   padding: 0;
 `;
-
-export default ColorModeSelectorStyle;

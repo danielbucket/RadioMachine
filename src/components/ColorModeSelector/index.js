@@ -1,5 +1,5 @@
 import React from 'react';
-import ColorModeSelectorStyle from './ColorModeSelectorStyle';
+import { ColorModeSelectorStyle } from './ColorModeSelectorStyle';
 
 export const ColorModeSelector = props => {
 	const value = props.colorMode ? 'Dark Mode' : 'Light Mode';

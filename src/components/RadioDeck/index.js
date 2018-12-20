@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { RadioMachineStyle } from './RadioMachineStyle';
-import { VolumeKnob } from '../VolumeKnob';
+import { RadioDeckStyle } from './RadioDeckStyle';
+import { Knob } from './VolumeKnob';
+import RadioDeckHeader from './RadioDeckHeader';
+import Speaker from '../Speaker';
 
 class RadioMachine extends Component {
 	constructor(props) {
@@ -14,13 +16,11 @@ class RadioMachine extends Component {
 	render() {
 
 		return(
-			<RadioMachineStyle>
-			<VolumeKnob />
-				{this.state.currentVolume}
-			</RadioMachineStyle>
+			<RadioDeckStyle>
+				<RadioDeckHeader />
+			</RadioDeckStyle>
 		);
 	};
 };
-
 
 export default RadioMachine;
