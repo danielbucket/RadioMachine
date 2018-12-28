@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { RadioDeckStyle } from './RadioDeckStyle';
 import { Knob } from './VolumeKnob';
 import RadioDeckHeader from './RadioDeckHeader';
-import Speaker from '../Speaker';
 
 class RadioMachine extends Component {
 	constructor(props) {

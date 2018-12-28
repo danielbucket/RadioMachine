@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../globalStyles/theme';
 import { GlobalStyle } from '../globalStyles/GlobalStyle';
-import { Radio_MachineStyle } from './Radio_MachineStyle';
+import { RadioMachineStyle } from './RadioMachineStyle';
 import ColorModeSelector from '../ColorModeSelector';
 import RadioDeck  from '../RadioDeck';
 import Speaker from '../Speaker';
+import Collection from '../Collection';
 
-class Radio_Machine extends Component {
+class RadioMachine extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -38,13 +39,13 @@ class Radio_Machine extends Component {
 
     return (
       <ThemeProvider theme={colorScheme}>
-        <Radio_MachineStyle>
+        <RadioMachineStyle>
           <header>header</header>
-          <Speaker position="speakerR"/>
-          <RadioDeck />
           <Speaker position="speakerL"/>
+          <RadioDeck />
+          <Speaker position="speakerR"/>
 
-          <div className="partition"></div>
+          <Collection />
           <footer className="footer">
             <ColorModeSelector setColorMode={this.setColorMode}
                                   colorMode={colorMode}/>
@@ -56,10 +57,10 @@ class Radio_Machine extends Component {
                                   colorMode={colorMode}/>
           </footer>
         <GlobalStyle />
-        </Radio_MachineStyle>
+        </RadioMachineStyle>
       </ThemeProvider>
     );
   };
 };
 
-export default Radio_Machine;
+export default RadioMachine;

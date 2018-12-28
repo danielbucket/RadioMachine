@@ -1,12 +1,10 @@
 import React from 'react';
-import { SpeakerStyle } from './SpeakerStyle';
+import { SpeakerStyle, speakerPostition } from './SpeakerStyle';
 
 const Speaker = props => {
-	const style = {gridArea: `radio / ${props.position}`};
-
 	return (
-		<SpeakerStyle style={style}>
-			Speaker
+		<SpeakerStyle style={speakerPostition(props)}>
+			{props.position}
 		</SpeakerStyle>
 		);
 };

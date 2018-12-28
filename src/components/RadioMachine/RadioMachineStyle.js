@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
-export const Radio_MachineStyle = styled.div`
+export const RadioMachineStyle = styled.div`
 	background: ${p=>p.theme.background};
 	color: ${p=>p.theme.fontColor};
 	padding: 2px;
+	min-height: 100vh;
 
 	display: grid;
 	grid-template-rows:
 		[header] 60px
 		[radio] 500px
-		[partition] auto
+		[collection] auto
 		[footer] 80px;
 	grid-template-columns:
 		[speakerR] auto
@@ -21,13 +22,6 @@ export const Radio_MachineStyle = styled.div`
 		grid-column: 1 / span 3;
 
 		border: 1px solid #bfa520;
-	}
-
-	.partition {
-		grid-row: 3 / 3;
-		grid-column: 1 / span 3;
-
-		border: 2px solid ${p=>p.theme.borderColor};
 	}
 
 	footer {
@@ -43,7 +37,7 @@ export const Radio_MachineStyle = styled.div`
 		grid-template-rows:
 			[header] 80px
 			[radio] 500px
-			[partition] auto
+			[collection] auto
 			[footer] 40px;
 
 		footer {

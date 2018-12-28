@@ -3,7 +3,7 @@ import { RadioDeckHeaderStyle } from './RadioDeckHeaderStyle';
 
 const RadioMachineHeader = () => {
 	return (
-		<RadioDeckHeaderStyle>Radio_Machine</RadioDeckHeaderStyle>
+		<RadioDeckHeaderStyle>Radio Machine</RadioDeckHeaderStyle>
 	)
 };
 

@@ -10,7 +10,8 @@ export const RadioDeckStyle = styled.div`
 
 
 	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
-		
+		grid-column: 2 / 2;
+
 	}
 
 	@media(min-width:${p=>p.theme.minWidthLgScreen}) {
