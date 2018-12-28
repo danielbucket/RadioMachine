@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 export const RadioDeckHeaderStyle = styled.div`
+	grid-row: 1 / span 2;
 	grid-column: 1 / span 5;
 	place-self: center;
-	display: flex;
-	align-items: center;
-
+	
 	color: ${p=>p.theme.fontColor};
-	font-size: 5em;
-	font-family: 'ZCOOL QingKe HuangYou', cursive;
-	letter-spacing: .15em;
+	font-family: ${p=>p.theme.mainFont};
+	font-size: 3rem;
+	letter-spacing: .75rem;
+
+	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
+		font-size: 5rem;
+	}
 `;

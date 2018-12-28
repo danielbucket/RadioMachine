@@ -3,19 +3,19 @@ import styled from 'styled-components';
 export const Radio_MachineStyle = styled.div`
 	background: ${p=>p.theme.background};
 	color: ${p=>p.theme.fontColor};
-	padding: .2em;
+	padding: 2px;
 
 	display: grid;
 	grid-template-rows:
-		[header] 6em
-		[radio] 50em
+		[header] 60px
+		[radio] 500px
 		[partition] auto
-		[footer] 8em;
+		[footer] 80px;
 	grid-template-columns:
-		[speakerR] 25fr
-		[deck] 50fr
-		[speakerL] 25fr;
-	
+		[speakerR] auto
+		[deck] minmax(300px, 400px)
+		[speakerL] auto;
+
 	header {
 		grid-row: 1 / 1;
 		grid-column: 1 / span 3;
@@ -35,16 +35,16 @@ export const Radio_MachineStyle = styled.div`
 		grid-column: 1 / span 3;
 
 		display: grid;
-		grid-template-columns: repeat(2, 50fr);
-		grid-template-rows: repeat(2, 50fr);
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
 	}
 
-	@media(min-width:450px) {
+	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
 		grid-template-rows:
-			[header] 8em
-			[radio] 50em
+			[header] 80px
+			[radio] 500px
 			[partition] auto
-			[footer] 4em;
+			[footer] 40px;
 
 		footer {
 			grid-template-columns: repeat(4, 25fr);
@@ -53,7 +53,7 @@ export const Radio_MachineStyle = styled.div`
 
 	}
 
-	@media(min-width:800px) {
+	@media(min-width:${p=>p.theme.minWidthLgScreen}) {
 
 	}
 `;

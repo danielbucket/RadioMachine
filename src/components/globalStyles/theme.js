@@ -13,6 +13,10 @@ export const theme = {
   },
 
   defaultStyles: {
-    borderRadius: '.2em',
+    borderRadius: '2px',
+    mainFont: 'ZCOOL QingKe HuangYou, cursive',
+    minWidthSmScreen: '350px',
+    minWidthMdScreen: '450px',
+    minWidthLgScreen: '800px',
   },
 };

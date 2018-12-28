@@ -40,9 +40,9 @@ class Radio_Machine extends Component {
       <ThemeProvider theme={colorScheme}>
         <Radio_MachineStyle>
           <header>header</header>
-            <Speaker position="speakerR"/>
-            <RadioDeck />
-            <Speaker position="speakerL"/>
+          <Speaker position="speakerR"/>
+          <RadioDeck />
+          <Speaker position="speakerL"/>
 
           <div className="partition"></div>
           <footer className="footer">
