@@ -13,10 +13,14 @@ class RadioMachine extends Component {
     super(props)
     this.state = {
       colorMode: true,
+      bassLevel: 10,
+      tweeterLevel: 10,
+      volumeLevel: 10,
     };
 
     this.setColorMode = this.setColorMode.bind(this);
     this.setColorScheme = this.setColorScheme.bind(this);
+    this.mouseEvent = this.mouseEvent.bind(this);
   };
 
   setColorMode() {
@@ -33,17 +37,25 @@ class RadioMachine extends Component {
     return Object.assign({},theme.lightMode, theme.defaultStyles);
   };
 
+  mouseEvent(i) {
+    console.log('i: ', i);
+  };
+
   render() {
     const { colorMode } = this.state;
-    const colorScheme = this.setColorScheme(theme)
+    const colorScheme = this.setColorScheme(theme);
+    const { bassLevel, tweeterLevel, volumeLevel } = this.state;
+    const speakerLevels = {
+      bassLevel, tweeterLevel, volumeLevel
+    };
 
     return (
       <ThemeProvider theme={colorScheme}>
         <RadioMachineStyle>
           <header>header</header>
-          <Speaker position="speakerL"/>
+          <Speaker position="speakerL" levels={speakerLevels} mouseEvent={this.mouseEvent}/>
           <RadioDeck />
-          <Speaker position="speakerR"/>
+          <Speaker position="speakerR" levels={speakerLevels} mouseEvent={this.mouseEvent}/>
 
           <Collection />
           <footer className="footer">
