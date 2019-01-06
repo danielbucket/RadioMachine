@@ -11,37 +11,64 @@ export const SpeakerStyle = styled.div`
 	@media(min-width:${p=>p.theme.minWidthLgScreen}) {
 		display: grid;
 		grid-template-rows:
-			[tweeter] 25fr
-			[mid] 25fr
-			[bass] 50fr;
+			[tweeter] 40fr
+			[woofer] 60fr;
 
 		width: calc(100% - 80px);
 		width: 200px;
 		height: 300px;
 		align-self: end;
 
-		.bass-speaker {
-			grid-row: bass;
+		.tweeter-container {
+			grid-row: tweeter;
+			
+			display: grid;
+			grid-template-columns: 
+				[tweeter-1] 1fr
+				[tweeter-2] 1fr;
+		}
+
+		.twter {
+			place-self: center;
+			height: 75px;
+			width: 75px;
+			border: 1px solid yellow;
+			border-radius: 50%;
+		}
+
+		.tweeter-1 {
+			grid-column: tweeter-1;
+		}
+
+		.tweeter-2 {
+			grid-column: tweeter-2;
+		}
+
+		.woofer {
+			grid-row: woofer;
 			place-self: center;
 
-			height: 40px;
-			width: 40px;
+			height: 145px;
+			width: 145px;
 			border-radius: 50%;
-			border: 1px solid ${p=>p.theme.borderColor}
+			border: 1px solid ${p=>p.theme.borderColor};
 
 		}
 	}
 `;
-			// ${p=>console.log(p)}
 
 export const speakerPostition = props => {
 	let align = 'end';
+	let margin = 'marginRight';
+
 	if (props.position === 'speakerL') {
-		align = 'start';
+		align = 'start'
+		margin = 'marginLeft'
 	};
 
 	return {
 		gridArea: `radio / ${props.position}`,
 		justifySelf: align,
-	}
+		[margin]: '10px',
+	};
 };

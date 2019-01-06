@@ -81,6 +81,7 @@ class Collection extends Component {
 	render() {
 		const playlists = this.generateLists();
 		const listLength = playlists.length;
+		const person = {name: "name", age: 23}
 
 		return (
 			<CollectionStyle listLength={listLength}>
