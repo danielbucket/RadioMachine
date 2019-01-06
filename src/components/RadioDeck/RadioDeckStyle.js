@@ -5,8 +5,8 @@ export const RadioDeckStyle = styled.div`
 	border: 5px solid ${p=>p.theme.borderColor};
 
 	display: grid;
-	grid-template-rows: repeat(8, 1fr);
 	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(8, 1fr);
 
 
 	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
