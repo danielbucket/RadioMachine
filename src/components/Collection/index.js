@@ -61,15 +61,20 @@ class Collection extends Component {
 		}, {});
 
 		return Object.keys(playlistElements).map((curVal, i) => {
+			const listLength = playlistElements[curVal].length;
+
 			return (
 	 			<div className="list-container"
 							key={curVal}
 							onDragOver={e => this.onDragOver(e)}
 							onDrop={e => this.onDrop(e,{curVal})}>
-					<h3 className="playlist-name">{curVal}</h3>
+					<div className="playlist-header">
+						<h3 className="playlist-name">{curVal}</h3>
+						<div className="playlist-song-count">{listLength} Songs</div>
+					</div>
 					{playlistElements[curVal]}
 				</div>
-			)
+			);
 		});
 	};
 

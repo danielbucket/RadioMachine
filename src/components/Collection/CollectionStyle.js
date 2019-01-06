@@ -5,10 +5,9 @@ export const CollectionStyle = styled.div`
 		grid-column: 1 / span 3;
 
 		border: 2px solid ${p=>p.theme.borderColor};
-		font-size: 1.5em;
 
 		display: grid;
-		grid-template-columns: repeat(${p=>p.listLength}, 250px);
+		grid-template-rows: repeat(${p=>p.listLength}, 100px);
 		overflow: scroll;
 		::-webkit-scrollbar {
 			display: none;
@@ -18,10 +17,28 @@ export const CollectionStyle = styled.div`
 		border: 1px solid ${p=>p.theme.borderColor};
 	}
 
+	.playlist-header {
+		border: 1px solid red;
+		display: grid;
+		grid-template-columns:
+			[listName] auto
+			[listCount] 20%;
+	}
+
 	.playlist-name {
+		grid-column: listName;
+
 		display: flex;
 		justify-content: center;
-		border-bottom: 1px solid red;
+	}
+
+	.playlist-song-count {
+		grid-column: listCount;
+	}
+
+	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
+		grid-template-rows: none;
+		grid-template-columns: repeat(${p=>p.listLength}, 250px);
 	}
 `;
 
