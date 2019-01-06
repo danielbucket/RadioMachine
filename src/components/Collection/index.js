@@ -1,42 +1,23 @@
 import React, { Component } from 'react';
 import { CollectionStyle } from './CollectionStyle';
-const collection = [
-				{	name: 'In Rainbows',
-					playlist: 'playlist_1',
-					bgColor: 'yellow',
-					id: 1 },
-				{ name: 'Workingmans Dead',
-					playlist: 'playlist_1',
-					bgColor: 'grey',
-					id: 2 },
-				{	name: 'Songs of the Plains',
-					playlist: 'playlist_2',
-					bgColor: 'orange',
-					id: 3 },
-				{	name: 'Witches Stew',
-					playlist: 'playlist_3',
-					bgColor: 'red',
-					id: 4 },
-				{	name: 'Drinkin and Jivin',
-					playlist: 'playlist_3',
-					bgColor: 'teal',
-					id: 5 }];
+import { playlist as collection } from '../../helpers/playlist';
 
 
 class Collection extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			collection: collection
+			collection: collection,
 		};
 
 		this.onDragOver = this.onDragOver.bind(this);
 		this.onDragStart = this.onDragStart.bind(this);
 		this.onDrop = this.onDrop.bind(this);
+		this.generateLists = this.generateLists.bind(this);
 	};
 
 	onDragOver(ev) {
-		ev.preventDefault()
+		ev.preventDefault();
 	};
 
 	onDragStart(ev,id) {
@@ -52,58 +33,53 @@ class Collection extends Component {
 			return item
 		});
 
+		const newState = Object.assign({}, this.state, collection)
+
 		this.setState({
-			...this.state,
-			collection
+			newState,
+		});
+	};
+
+	generateLists() {
+		const { collection } = this.state;
+
+		const playlistElements = collection.reduce((listObject,curVal) => {
+			if (!listObject[curVal.playlist]) {
+				listObject[curVal.playlist] = [];
+			};
+
+			listObject[curVal.playlist].push(
+				<div className="playlist-item" 
+							key={curVal.id}
+							onDragStart={e => this.onDragStart(e, curVal.id)}
+							draggable>
+					<div>Artist: {curVal.artist}</div>
+					<div>Album: {curVal.album}</div>
+				</div>
+			);
+			return listObject;
+		}, {});
+
+		return Object.keys(playlistElements).map((curVal, i) => {
+			return (
+	 			<div className="list-container"
+							key={curVal}
+							onDragOver={e => this.onDragOver(e)}
+							onDrop={e => this.onDrop(e,{curVal})}>
+					<h3 className="playlist-name">{curVal}</h3>
+					<div>{playlistElements[curVal]}</div>
+				</div>
+			)
 		});
 	};
 
 	render() {
-		let playLists = {
-			playlist_1: [],
-			playlist_2: [],
-			playlist_3: [],
-		};
-
-		this.state.collection.forEach(t => {
-			playLists[t.playlist].push(
-				<div className="playlist-item"
-							key={t.id}
-							onDragStart={e => this.onDragStart(e, t.id)}
-							draggable
-							style={{backgroundColor: t.bgColor}}>
-					{t.name}
-				</div>
-			);
-		});
+		const playlists = this.generateLists();
+		const listLength = playlists.length;
 
 		return (
-			<CollectionStyle>
-
-					<div className="playlist-1"
-								style={{border:'1px solid green'}}
-								onDragOver={e => this.onDragOver(e)}
-								onDrop={e => this.onDrop(e,'playlist_1')}>
-						<h3>Playlist 1</h3>
-						{playLists.playlist_1}
-					</div>
-
-					<div className="playlist-2"
-								style={{border:'1px solid white'}}
-								onDragOver={e => this.onDragOver(e)}
-								onDrop={e => this.onDrop(e,'playlist_2')}>
-						<h3>Playlist 2</h3>
-						{playLists.playlist_2}
-					</div>
-
-					<div className="playlist-3"
-								style={{border:'1px solid white'}}
-								onDragOver={e => this.onDragOver(e)}
-								onDrop={e => this.onDrop(e,'playlist_3')}>
-						<h3>Playlist 3</h3>
-						{playLists.playlist_3}
-					</div>
-
+			<CollectionStyle listLength={listLength}>
+				{playlists}
 			</CollectionStyle>
 		);
 	};

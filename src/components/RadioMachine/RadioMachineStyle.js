@@ -10,7 +10,7 @@ export const RadioMachineStyle = styled.div`
 	grid-template-rows:
 		[header] 60px
 		[radio] 500px
-		[collection] auto
+		[collection] minmax(auto,150px)
 		[footer] 80px;
 	grid-template-columns:
 		[speakerR] auto

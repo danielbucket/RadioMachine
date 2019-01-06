@@ -8,6 +8,23 @@ export const CollectionStyle = styled.div`
 		font-size: 1.5em;
 
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(${p=>p.listLength}, 250px);
+		overflow: scroll;
+		::-webkit-scrollbar {
+			display: none;
+		}
 
+	.list-container {
+		border: 1px solid ${p=>p.theme.borderColor};
+	}
+
+	.playlist-name {
+		display: flex;
+		justify-content: center;
+		border-bottom: 1px solid red;
+	}
+`;
+
+export const playlistItemStyle = styled.div`
+	
 `;

@@ -3,7 +3,6 @@ export const theme = {
     fontColor: '#a8b3ca',
     background: '#282c33',
     borderColor: '#1282e6', //BLUE
-
   },
 
   lightMode: {
