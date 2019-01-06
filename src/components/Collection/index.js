@@ -67,7 +67,7 @@ class Collection extends Component {
 							onDragOver={e => this.onDragOver(e)}
 							onDrop={e => this.onDrop(e,{curVal})}>
 					<h3 className="playlist-name">{curVal}</h3>
-					<div>{playlistElements[curVal]}</div>
+					{playlistElements[curVal]}
 				</div>
 			)
 		});
