@@ -25,18 +25,17 @@ class Collection extends Component {
 	};
 
 	onDrop(ev,list) {
-		let id = ev.dataTransfer.getData('id');
-		let collection = this.state.collection.filter(item => {
+		const id = ev.dataTransfer.getData('id');
+		const newCollection = this.state.collection.filter(item => {
 			if (item.id == id) {
-				item.playlist = list;
+				item.playlist = list.curVal;
 			};
-			return item
+			return item;
 		});
 
-		const newState = Object.assign({}, this.state, collection)
 
 		this.setState({
-			newState,
+			collection:newCollection,
 		});
 	};
 
@@ -51,7 +50,7 @@ class Collection extends Component {
 			listObject[curVal.playlist].push(
 				<div className="playlist-item" 
 							key={curVal.id}
-							onDragStart={e => this.onDragStart(e, curVal.id)}
+							onDragStart={ev => this.onDragStart(ev, curVal.id)}
 							draggable>
 					<div>Artist: {curVal.artist}</div>
 					<div>Album: {curVal.album}</div>
@@ -60,7 +59,7 @@ class Collection extends Component {
 			return listObject;
 		}, {});
 
-		return Object.keys(playlistElements).map((curVal, i) => {
+		return Object.keys(playlistElements).sort().map((curVal, i) => {
 			const listLength = playlistElements[curVal].length;
 
 			return (

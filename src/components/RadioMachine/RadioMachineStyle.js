@@ -60,9 +60,9 @@ export const RadioMachineStyle = styled.div`
 			[deck] 800px
 			[speakerL] auto;
 		grid-template-rows:
-			[header] 60px
-			[radio] 700px
-			[collection] minmax(auto,150px)
-			[footer] 80px;
+			[header] 80px
+			[radio] 650px
+			[collection] auto
+			[footer] 60px;
 	}
 `;
