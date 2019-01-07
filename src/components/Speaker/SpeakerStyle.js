@@ -86,6 +86,22 @@ export const SpeakerStyle = styled.div`
 			width: 120px;
 		}
 	}
+
+	@media(min-height:${p=>p.theme.minHeightLgScreen}) {
+		height: 400px;
+		max-width: none;
+		width: 300px;
+
+		.tweeters {
+			height: 120px;
+			width: 120px;
+		}
+
+		.woofer {
+			height: 200px;
+			width: 200px;
+		}
+	}
 `;
 
 export const speakerPostition = props => {

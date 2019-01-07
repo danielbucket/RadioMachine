@@ -12,8 +12,6 @@ const Speaker = props => {
 				<div className="tweeters tweeter-2"></div>
 			</div>
 			<div className="woofer"></div>
-
-
 		</SpeakerStyle>
 		);
 };

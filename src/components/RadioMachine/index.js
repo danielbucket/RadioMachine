@@ -31,10 +31,20 @@ class RadioMachine extends Component {
 
   setColorScheme(theme) {
     if (this.state.colorMode) {
-      return Object.assign({},theme.darkMode, theme.defaultStyles);
+      return Object.assign(
+        {},
+        theme.darkMode,
+        theme.defaultStyles,
+        theme.mediaSizes,
+      );
     };
 
-    return Object.assign({},theme.lightMode, theme.defaultStyles);
+    return Object.assign(
+      {},
+      theme.lightMode,
+      theme.defaultStyles,
+      theme.mediaSizes,
+    );
   };
 
   mouseEvent(i) {

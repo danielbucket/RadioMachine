@@ -53,4 +53,16 @@ export const RadioMachineStyle = styled.div`
 	@media(min-width:${p=>p.theme.minWidthLgScreen}) {
 
 	}
+
+	@media(min-height:${p=>p.theme.minHeightLgScreen}) {
+		grid-template-columns:
+			[speakerR] auto
+			[deck] 800px
+			[speakerL] auto;
+		grid-template-rows:
+			[header] 60px
+			[radio] 700px
+			[collection] minmax(auto,150px)
+			[footer] 80px;
+	}
 `;

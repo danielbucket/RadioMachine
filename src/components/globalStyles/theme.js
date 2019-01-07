@@ -14,8 +14,12 @@ export const theme = {
   defaultStyles: {
     borderRadius: '2px',
     mainFont: 'ZCOOL QingKe HuangYou, cursive',
+  },
+
+  mediaSizes: {
     minWidthSmScreen: '350px',
     minWidthMdScreen: '450px',
     minWidthLgScreen: '800px',
+    minHeightLgScreen: '800px',
   },
 };
