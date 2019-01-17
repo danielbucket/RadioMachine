@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const RadioDeckHeaderStyle = styled.div`
-	grid-row: 1 / span 2;
-	grid-column: 1 / span 5;
-	place-self: center;
+export const DialsAndMetersStyle = styled.div`
+	grid-row: dialsAndMeters;
+
+	border: 1px solid red;
 	
 	color: ${p=>p.theme.fontColor};
 	font-family: ${p=>p.theme.mainFont};

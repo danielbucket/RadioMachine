@@ -5,8 +5,11 @@ export const RadioDeckStyle = styled.div`
 	border: 5px solid ${p=>p.theme.borderColor};
 
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(8, 1fr);
+	grid-template-rows: 
+		[dialsAndMeters] 	1fr
+		[soundLevels] 		1.5fr
+		[musicStats] 			1.5fr
+		[tapeDeck] 				3fr;
 
 
 	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
