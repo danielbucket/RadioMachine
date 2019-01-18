@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { SoundLevelsStyle, IndicatorLight } from './SoundLevelsStyle';
+import {	SoundLevelsStyle,
+					IndicatorLightStyle,
+					IndicatorContainerStyle } from './SoundLevelsStyle';
 
 class SoundLevels extends Component {
 	constructor(props) {
@@ -24,45 +26,42 @@ class SoundLevels extends Component {
 		});
 	};
 
-	createLightBar(value, levelType) {
-		const barArray = [];
-		let valid = true;
+	createLightBar(value, indicatorType) {
+		const indicatorArray = [];
+		let isValid = true;
 
 		for (let i=0; i<=value; i++) {
-			if (i > valid) {
-				valid = false;
-			};
-
-			barArray.push(
-				<IndicatorLight key={i}
-							className={levelType+"-bar"}
-							valid={valid} >
-				{i}
-				</IndicatorLight>
+			indicatorArray.push(
+				<IndicatorLightStyle key={i}
+							className={indicatorType+"-bar"}
+							indicatorType={indicatorType}>
+				</IndicatorLightStyle>
 			);
 		};
 
-		return barArray;
+		return (
+			<IndicatorContainerStyle>
+				<div className="indicator-type">{indicatorType}:</div>
+				<div className="indicator-bar">{indicatorArray}</div>
+			</IndicatorContainerStyle>
+		);
 	};
 
 	render() {	
-		const { maxVolume, volume,
-						maxBass, bass,
-						maxTreble, treble,
-					} = this.state;
+		const { volume, bass, treble, } = this.state;
 
 		const volumeBars = this.createLightBar(volume,'volume');
 		const bassBars = this.createLightBar(bass,'bass');
 		const trebleBars = this.createLightBar(treble,'treble');
 
 		return (
-			<SoundLevelsStyle maxVolume={maxVolume}>
-			{ volumeBars }
-			{ bassBars }
-			{ trebleBars }
+			<SoundLevelsStyle>
+				{ volumeBars }
+				{ bassBars }
+				{ trebleBars }
 			</SoundLevelsStyle>
-		)
-	}
+		);
+	};
 };
 
 export default SoundLevels;
