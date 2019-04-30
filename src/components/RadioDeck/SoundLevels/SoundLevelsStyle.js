@@ -28,7 +28,7 @@ export const IndicatorContainerStyle = styled.div`
 		border: 1px solid ivory;
 
 		display: grid;
-		grid-template-columns: repeat(${p=>p.indicatorValue}, 1fr);
+		grid-template-rows: repeat(${p=>p.indicatorValue}, 1fr);
 	}
 
 	.indicator-type {

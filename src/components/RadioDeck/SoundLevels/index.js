@@ -40,28 +40,27 @@ class SoundLevels extends Component {
 		for (let i=0; i<=limitValue; i++) {
 			let maxVal = i.toString();
 			if (i <= 9) {maxVal = i+"e"};
-
 			const inputColor = "#ff"+maxVal+"1d";
 			const newColor = LightenDarkenColor(inputColor, i);
-
 			if (i > userValue) {newColor = "transparent"};
 
 			const style = {"backgroundColor":newColor};
 
-			indicatorArray.push(
+			indicatorArray.unshift(
 				<div key={i}
 							className={indicatorType+"-bar"}
-							indicatorType={indicatorType}
+							indicatortype={indicatorType}
 							style={style}
 							onClick={()=>this.changeValue(indicatorType,i)}>
-					<div className="indicator-value">{i}</div>
+					<div className="indicator-value"
+								style={style}>{i}</div>
 				</div>
 			);
 		};
 
 		return (
 			<IndicatorContainerStyle indicatorValue={limitValue+1}
-																indicatorType={indicatorType}>
+																indicatortype={indicatorType}>
 				<div className="indicator-bar">{indicatorArray}</div>
 				<div className="indicator-type">{indicatorType}</div>
 			</IndicatorContainerStyle>

@@ -4,7 +4,7 @@ const LightenDarkenColor = (col,amt) => {
     if (col[0] == "#") {
       col = col.slice(1);
       usePound = true;
-    }
+    };
  
     const num = parseInt(col,16);
  
@@ -23,7 +23,7 @@ const LightenDarkenColor = (col,amt) => {
     if (g > 255) g = 255;
     else if (g < 0) g = 0;
  
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+    return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 };
 
 export default LightenDarkenColor;
