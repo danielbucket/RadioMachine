@@ -9,21 +9,30 @@ class RadioMachine extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			volume: 5,
+			volume: 3,
+			maxVolume: 9,
 			bass: 7,
-			treble: 11,
+			maxBass:9,
+			treble: 8,
+			maxTreble: 9,
 		};
 	};
 
 	render() {
-		const { volume, bass, treble, } = this.state;
+		const { maxVolume, volume,
+						maxBass, bass,
+						maxTreble, treble,
+					} = this.state;
 
 		return(
 			<RadioDeckStyle>
-				<DialsAndMeters />
+				<DialsAndMeters />	
 				<SoundLevels volume={volume}
+											maxVolume={maxVolume}
 											bass={bass}
-											treble={treble}/>
+											maxBass={maxBass}
+											treble={treble}
+											maxTreble={maxTreble}/>
 				<MusicStats />
 				<TapeDeck />
 			</RadioDeckStyle>

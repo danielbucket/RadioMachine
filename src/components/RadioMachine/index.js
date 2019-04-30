@@ -23,8 +23,18 @@ class RadioMachine extends Component {
     this.mouseEvent = this.mouseEvent.bind(this);
   };
 
+
+
   setColorMode() {
+    console.log("mother fucker")
+
     const colorModeValue = !this.state.colorMode;
+
+    setInterval(() => {
+      this.setState({ colorMode:colorModeValue })
+      
+    }, 250)
+
 
     this.setState({ colorMode:colorModeValue });
   };

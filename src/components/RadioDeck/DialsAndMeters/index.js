@@ -6,7 +6,7 @@ const DialsAndMeters = () => {
 		<DialsAndMetersStyle>
 		DialsAndMeters
 		</DialsAndMetersStyle>
-	)
+	);
 };
 
 export default DialsAndMeters;

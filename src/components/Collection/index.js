@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { CollectionStyle } from './CollectionStyle';
 import { playlist as collection } from '../../helpers/playlist';
 
-
 class Collection extends Component {
 	constructor(props) {
 		super(props)
@@ -14,6 +13,11 @@ class Collection extends Component {
 		this.onDragStart = this.onDragStart.bind(this);
 		this.onDrop = this.onDrop.bind(this);
 		this.generateLists = this.generateLists.bind(this);
+		this.onClick = this.onClick.bind(this);
+	};
+
+	onClick(e) {
+		console.log('eat shit: ', e)
 	};
 
 	onDragOver(ev) {
@@ -32,7 +36,6 @@ class Collection extends Component {
 			};
 			return item;
 		});
-
 
 		this.setState({
 			collection:newCollection,
@@ -59,11 +62,12 @@ class Collection extends Component {
 			return listObject;
 		}, {});
 
-		return Object.keys(playlistElements).sort().map((curVal, i) => {
+		const elementsList = Object.keys(playlistElements).sort().map((curVal, i) => {
 			const listLength = playlistElements[curVal].length;
 
 			return (
 	 			<div className="list-container"
+	 						onClick={e => this.onClick(e)}
 							key={curVal}
 							onDragOver={e => this.onDragOver(e)}
 							onDrop={e => this.onDrop(e,{curVal})}>
@@ -75,6 +79,20 @@ class Collection extends Component {
 				</div>
 			);
 		});
+
+		elementsList.push(
+			<div className="new-playlist-card"
+						key="newPlaylistCard"
+						onDragOver={e => this.onDragOver(e)}
+						onDrop={e => this.onDrop(e, {curVal:'newPlaylist'})}>
+				<div>
+					new playlist card
+				</div>
+
+			</div>
+		);
+
+		return elementsList;
 	};
 
 	render() {

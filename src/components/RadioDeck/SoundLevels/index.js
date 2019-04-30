@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {	SoundLevelsStyle,
 					IndicatorLightStyle,
 					IndicatorContainerStyle } from './SoundLevelsStyle';
+import LightenDarkenColor from '../../../helpers/LightenDarkenColor';
 
 class SoundLevels extends Component {
 	constructor(props) {
 		super(props);
 
 		this.createLightBar = this.createLightBar.bind(this);
+		this.changeValue = this.changeValue.bind(this);
 	};
 
 	componentWillMount() {
@@ -26,36 +28,57 @@ class SoundLevels extends Component {
 		});
 	};
 
-	createLightBar(value, indicatorType) {
-		const indicatorArray = [];
-		let isValid = true;
+	changeValue(type,value) {
+		this.setState({[type]:value})
+	};
 
-		for (let i=0; i<=value; i++) {
+	createLightBar(limitValue, userValue, indicatorType) {
+		const indicatorArray = [];
+		// user feedback will be needed in later iterations
+		if (userValue > limitValue) {userValue = limitValue};
+
+		for (let i=0; i<=limitValue; i++) {
+			let maxVal = i.toString();
+			if (i <= 9) {maxVal = i+"e"};
+
+			const inputColor = "#ff"+maxVal+"1d";
+			const newColor = LightenDarkenColor(inputColor, i);
+
+			if (i > userValue) {newColor = "transparent"};
+
+			const style = {"backgroundColor":newColor};
+
 			indicatorArray.push(
-				<IndicatorLightStyle key={i}
+				<div key={i}
 							className={indicatorType+"-bar"}
-							indicatorType={indicatorType}>
-				</IndicatorLightStyle>
+							indicatorType={indicatorType}
+							style={style}
+							onClick={()=>this.changeValue(indicatorType,i)}>
+					<div className="indicator-value">{i}</div>
+				</div>
 			);
 		};
 
 		return (
-			<IndicatorContainerStyle>
-				<div className="indicator-type">{indicatorType}:</div>
+			<IndicatorContainerStyle indicatorValue={limitValue+1}
+																indicatorType={indicatorType}>
 				<div className="indicator-bar">{indicatorArray}</div>
+				<div className="indicator-type">{indicatorType}</div>
 			</IndicatorContainerStyle>
 		);
 	};
 
 	render() {	
-		const { volume, bass, treble, } = this.state;
+		const { volume, maxVolume,
+						bass, maxBass,
+						treble, maxTreble, } = this.state;
 
-		const volumeBars = this.createLightBar(volume,'volume');
-		const bassBars = this.createLightBar(bass,'bass');
-		const trebleBars = this.createLightBar(treble,'treble');
+		const volumeBars = this.createLightBar(maxVolume, volume, 'volume');
+		const bassBars = this.createLightBar(maxBass, bass, 'bass');
+		const trebleBars = this.createLightBar(maxTreble, treble, 'treble');
 
 		return (
-			<SoundLevelsStyle>
+			<SoundLevelsStyle >
 				{ volumeBars }
 				{ bassBars }
 				{ trebleBars }
