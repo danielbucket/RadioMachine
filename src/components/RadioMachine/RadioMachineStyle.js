@@ -15,7 +15,7 @@ export const RadioMachineStyle = styled.div`
 		[header] 60px
 		[radio] 500px
 		[collection] minmax(auto,150px)
-		[footer] 80px;
+		[ColorModeSelector] 80px;
 
 	header {
 		grid-row: 1 / 1;
@@ -24,14 +24,6 @@ export const RadioMachineStyle = styled.div`
 		border: 1px solid #bfa520;
 	}
 
-	footer {
-		grid-row: 4 / 4;
-		grid-column: 1 / span 3;
-
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-	}
 
 	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
 		grid-template-columns:

@@ -12,8 +12,8 @@ class RadioMachine extends Component {
 			volume: 3,
 			maxVolume: 9,
 			bass: 7,
-			maxBass:9,
-			treble: 8,
+			maxBass: 9,
+			treble: 5,
 			maxTreble: 9,
 		};
 	};

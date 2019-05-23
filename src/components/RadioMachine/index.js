@@ -1,93 +1,73 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../globalStyles/theme';
-import { GlobalStyle } from '../globalStyles/GlobalStyle';
+import { globalTheme } from '../globalStyles/theme';
+import { GlobalStyle } from  '../globalStyles/GlobalStyle';
+import { setColorMode } from '../globalStyles/setColorMode';
 import { RadioMachineStyle } from './RadioMachineStyle';
-import ColorModeSelector from '../ColorModeSelector';
 import RadioDeck  from '../RadioDeck';
 import Speaker from '../Speaker';
 import Collection from '../Collection';
+import ColorModeSelector from '../ColorModeSelector';
 
 class RadioMachine extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      colorMode: true,
+      colorModeName: '',
+      colorModeObj: {},
       bassLevel: 10,
       tweeterLevel: 10,
       volumeLevel: 10,
     };
 
-    this.setColorMode = this.setColorMode.bind(this);
+    this.setColorMode = setColorMode.bind(this);
     this.setColorScheme = this.setColorScheme.bind(this);
     this.mouseEvent = this.mouseEvent.bind(this);
+    this.globalTheme = globalTheme;
   };
 
 
+  componentWillMount() {
+    const oldState = this.state;
+    const initState = this.setColorScheme('darkMode');
+    const newState = Object.assign(oldState,initState);
 
-  setColorMode() {
-    console.log("mother fucker")
-
-    const colorModeValue = !this.state.colorMode;
-
-    setInterval(() => {
-      this.setState({ colorMode:colorModeValue })
-      
-    }, 250)
-
-
-    this.setState({ colorMode:colorModeValue });
+    this.setState({ newState });
   };
 
-  setColorScheme(theme) {
-    if (this.state.colorMode) {
-      return Object.assign(
-        {},
-        theme.darkMode,
-        theme.defaultStyles,
-        theme.mediaSizes,
-      );
-    };
 
-    return Object.assign(
-      {},
-      theme.lightMode,
-      theme.defaultStyles,
-      theme.mediaSizes,
-    );
+  setColorScheme(themeName) {
+    const newThemeObj = this.setColorMode(themeName,this.globalTheme);
+    this.setState({ 
+      colorModeName:themeName,
+      colorModeObj:newThemeObj,
+    });
   };
+
 
   mouseEvent(i) {
     console.log('i: ', i);
   };
 
+
   render() {
-    const { colorMode } = this.state;
-    const colorScheme = this.setColorScheme(theme);
+    const { themes } = globalTheme;
+    const colorScheme = this.state.colorModeObj;
     const { bassLevel, tweeterLevel, volumeLevel } = this.state;
     const speakerLevels = {
-      bassLevel, tweeterLevel, volumeLevel
+      bassLevel, tweeterLevel, volumeLevel,
     };
 
     return (
       <ThemeProvider theme={colorScheme}>
         <RadioMachineStyle>
           <header>header</header>
-          <Speaker position="speakerL" levels={speakerLevels} mouseEvent={this.mouseEvent}/>
+          <Speaker position="speakerL" levels={speakerLevels}/>
           <RadioDeck />
-          <Speaker position="speakerR" levels={speakerLevels} mouseEvent={this.mouseEvent}/>
-
+          <Speaker position="speakerR" levels={speakerLevels}/>
           <Collection />
-          <footer className="footer">
-            <ColorModeSelector setColorMode={this.setColorMode}
-                                  colorMode={colorMode}/>
-            <ColorModeSelector setColorMode={this.setColorMode}
-                                  colorMode={colorMode}/>
-            <ColorModeSelector setColorMode={this.setColorMode}
-                                  colorMode={colorMode}/>
-            <ColorModeSelector setColorMode={this.setColorMode}
-                                  colorMode={colorMode}/>
-          </footer>
+          <ColorModeSelector setColorScheme={this.setColorScheme }
+                               globalTheme={globalTheme}/>
         <GlobalStyle />
         </RadioMachineStyle>
       </ThemeProvider>

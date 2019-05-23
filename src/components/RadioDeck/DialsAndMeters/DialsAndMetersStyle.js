@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const DialsAndMetersStyle = styled.div`
 	grid-row: dialsAndMeters;
 
-	border: 1px solid red;
 	
 	color: ${p=>p.theme.fontColor};
 	font-family: ${p=>p.theme.mainFont};

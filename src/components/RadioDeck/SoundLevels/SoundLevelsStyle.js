@@ -74,7 +74,7 @@ export const IndicatorContainerStyle = styled.div`
 		grid-row: indicatorType;
 		color: ${p=>p.theme.fontColor};
 		font-family: ${p=>p.theme.mainFont};
-		background-color: ivory;
+		background-color: ${p=>p.theme.backColor};
 		text-align: center;
 	}
 `;

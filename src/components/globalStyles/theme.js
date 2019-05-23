@@ -1,14 +1,29 @@
-export const theme = {
-  darkMode: {
-    fontColor: '#a8b3ca',
-    background: '#282c33',
-    borderColor: '#1282e6', //BLUE
-  },
+export const globalTheme = {
 
-  lightMode: {
-    fontColor: '#282c33',
-    background: '#dcdfe5',
-    borderColor: '#ff9422', //ORANGE
+  themes: {
+    darkMode: {
+      background: '#282c33',
+      borderColor: '#1282e6', //BLUE
+      fontColor: '#a8b3ca',
+    },
+
+    lightMode: {
+      background: '#dcdfe5',
+      borderColor: '#ff9422', //ORANGE
+      color: '#282c33',
+    },
+
+    sunsetMode: {
+      background: 'ivory',
+      borderColor: 'ivory',
+      color: 'black',
+    },
+
+    rastaMode: {
+      background: 'red',
+      borderColor: 'yellow',
+      color: 'green',
+    },
   },
 
   defaultStyles: {
