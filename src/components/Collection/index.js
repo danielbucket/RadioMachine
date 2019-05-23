@@ -7,6 +7,7 @@ class Collection extends Component {
 		super(props)
 		this.state = {
 			collection: collection,
+			newPlaylistName: 'New Playlist',
 		};
 
 		this.onDragOver = this.onDragOver.bind(this);
@@ -14,6 +15,7 @@ class Collection extends Component {
 		this.onDrop = this.onDrop.bind(this);
 		this.generateLists = this.generateLists.bind(this);
 		this.onClick = this.onClick.bind(this);
+		this.onChange = this.onChange.bind(this);
 	};
 
 	onClick(e) {
@@ -40,6 +42,12 @@ class Collection extends Component {
 		this.setState({
 			collection:newCollection,
 		});
+	};
+
+	onChange(key,i) {
+		const newValue = i.target.value;
+
+		this.setState({ [key]:newValue });
 	};
 
 	generateLists() {
@@ -85,10 +93,8 @@ class Collection extends Component {
 						key="newPlaylistCard"
 						onDragOver={e => this.onDragOver(e)}
 						onDrop={e => this.onDrop(e, {curVal:'newPlaylist'})}>
-				<div>
-					new playlist card
-				</div>
-
+				<input onChange={i => this.onChange('newPlaylistName',i)}
+								value={this.state.newPlaylistName}/>
 			</div>
 		);
 
