@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {	SoundLevelsStyle,
-					IndicatorLightStyle,
 					IndicatorContainerStyle } from './SoundLevelsStyle';
 import LightenDarkenColor from '../../../helpers/LightenDarkenColor';
 
@@ -41,7 +40,7 @@ class SoundLevels extends Component {
 			let maxVal = i.toString();
 			if (i <= 9) {maxVal = i+"e"};
 			const inputColor = "#ff"+maxVal+"1d";
-			const newColor = LightenDarkenColor(inputColor, i);
+			let newColor = LightenDarkenColor(inputColor, i);
 			if (i > userValue) {newColor = "transparent"};
 
 			const style = {"backgroundColor":newColor};

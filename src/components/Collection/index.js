@@ -31,7 +31,7 @@ class Collection extends Component {
 	onDrop(ev,list) {
 		const id = ev.dataTransfer.getData('id');
 		const newCollection = this.state.collection.filter(item => {
-			if (item.id == id) {
+			if (item.id.toString() === id) {
 				item.playlist = list.curVal;
 			};
 			return item;
@@ -98,7 +98,6 @@ class Collection extends Component {
 	render() {
 		const playlists = this.generateLists();
 		const listLength = playlists.length;
-		const person = {name: "name", age: 23}
 
 		return (
 			<CollectionStyle listLength={listLength}>

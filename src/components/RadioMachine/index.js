@@ -22,7 +22,6 @@ class RadioMachine extends Component {
 
     this.setColorMode = setColorMode.bind(this);
     this.setColorScheme = this.setColorScheme.bind(this);
-    this.mouseEvent = this.mouseEvent.bind(this);
     this.globalTheme = globalTheme;
   };
 
@@ -45,13 +44,7 @@ class RadioMachine extends Component {
   };
 
 
-  mouseEvent(i) {
-    console.log('i: ', i);
-  };
-
-
   render() {
-    const { themes } = globalTheme;
     const colorScheme = this.state.colorModeObj;
     const { bassLevel, tweeterLevel, volumeLevel } = this.state;
     const speakerLevels = {

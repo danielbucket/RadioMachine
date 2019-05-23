@@ -1,7 +1,7 @@
 const LightenDarkenColor = (col,amt) => {
 	let usePound = false;
   
-    if (col[0] == "#") {
+    if (col[0].toString() === "#") {
       col = col.slice(1);
       usePound = true;
     };

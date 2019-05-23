@@ -3,8 +3,6 @@ import { SpeakerStyle, speakerPostition } from './SpeakerStyle';
 
 
 const Speaker = props => {
-	const { mouseEvent } = props;
-
 	return (
 		<SpeakerStyle style={speakerPostition(props)} levels={props.levels}>
 			<div className="tweeter-container">
@@ -13,7 +11,7 @@ const Speaker = props => {
 			</div>
 			<div className="woofer"></div>
 		</SpeakerStyle>
-		);
+	);
 };
 
 export default Speaker;

@@ -78,9 +78,3 @@ export const IndicatorContainerStyle = styled.div`
 		text-align: center;
 	}
 `;
-
-export const IndicatorLightStyle = styled.div`
-	grid-row: ${p=>p.indicatorType};
-
-`;
-//
