@@ -3,21 +3,25 @@ import { ColorModeSelectorStyle } from './ColorModeSelectorStyle';
 
 export const ColorModeSelector = props => {
 	const { themes } = props.globalTheme;
-	const themeSelections = Object.keys(themes).map(modeName=>{
+	const themeSelections = Object.keys(themes).map(theme => {
+		const themeName = themes[theme].themeName;
+
 		return (
-			<div key={modeName} 
-						style={themes[modeName]}
-					onClick={()=>props.setColorScheme(modeName)}
-				className="volume-level-text">
-				{modeName}
-			</div>
+			<a key={theme} 
+				 style={themes[theme]}
+				 onClick={()=>props.setColorScheme(theme)}
+				 className="color-mode-selection">
+				 {themeName}
+			</a>
 		);
 	});
 
 	const themeQuantity = themeSelections.length;
+
 	return (
 		<ColorModeSelectorStyle themeQuantity={themeQuantity}>
-				{themeSelections}
+			<a className="color-mode-selection drop-menu-cover">Selections</a>
+			{themeSelections}
     </ColorModeSelectorStyle>
 	);
 };

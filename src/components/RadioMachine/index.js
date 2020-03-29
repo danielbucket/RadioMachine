@@ -4,10 +4,11 @@ import { globalTheme } from '../globalStyles/theme';
 import { GlobalStyle } from  '../globalStyles/GlobalStyle';
 import { setColorMode } from '../globalStyles/setColorMode';
 import { RadioMachineStyle } from './RadioMachineStyle';
+import Header from '../Header';
 import RadioDeck  from '../RadioDeck';
 import Speaker from '../Speaker';
 import Collection from '../Collection';
-import ColorModeSelector from '../ColorModeSelector';
+import Footer from '../Footer';
 
 class RadioMachine extends Component {
   constructor(props) {
@@ -19,12 +20,11 @@ class RadioMachine extends Component {
       tweeterLevel: 10,
       volumeLevel: 10,
     };
-
+    
     this.setColorMode = setColorMode.bind(this);
     this.setColorScheme = this.setColorScheme.bind(this);
     this.globalTheme = globalTheme;
   };
-
 
   componentWillMount() {
     const oldState = this.state;
@@ -34,7 +34,6 @@ class RadioMachine extends Component {
     this.setState({ newState });
   };
 
-
   setColorScheme(themeName) {
     const newThemeObj = this.setColorMode(themeName,this.globalTheme);
     this.setState({ 
@@ -42,7 +41,6 @@ class RadioMachine extends Component {
       colorModeObj:newThemeObj,
     });
   };
-
 
   render() {
     const colorScheme = this.state.colorModeObj;
@@ -54,13 +52,13 @@ class RadioMachine extends Component {
     return (
       <ThemeProvider theme={colorScheme}>
         <RadioMachineStyle>
-          <header>header</header>
+          <Header setColorScheme={this.setColorScheme}
+                               globalTheme={globalTheme}/>
           <Speaker position="speakerL" levels={speakerLevels}/>
           <RadioDeck />
           <Speaker position="speakerR" levels={speakerLevels}/>
           <Collection />
-          <ColorModeSelector setColorScheme={this.setColorScheme }
-                               globalTheme={globalTheme}/>
+          <Footer />
         <GlobalStyle />
         </RadioMachineStyle>
       </ThemeProvider>

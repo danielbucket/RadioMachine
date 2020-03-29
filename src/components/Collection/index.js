@@ -13,13 +13,13 @@ class Collection extends Component {
 		this.onDragOver = this.onDragOver.bind(this);
 		this.onDragStart = this.onDragStart.bind(this);
 		this.onDrop = this.onDrop.bind(this);
-		this.generateLists = this.generateLists.bind(this);
+		this.generateCollectionLists = this.generateCollectionLists.bind(this);
 		this.onClick = this.onClick.bind(this);
 		this.onChange = this.onChange.bind(this);
 	};
 
 	onClick(e) {
-		console.log('eat shit: ', e)
+		console.log('this button should play the selected song: ', e)
 	};
 
 	onDragOver(ev) {
@@ -50,7 +50,7 @@ class Collection extends Component {
 		this.setState({ [key]:newValue });
 	};
 
-	generateLists() {
+	generateCollectionLists() {
 		const { collection } = this.state;
 
 		const playlistElements = collection.reduce((listObject,curVal) => {
@@ -79,10 +79,12 @@ class Collection extends Component {
 							key={curVal}
 							onDragOver={e => this.onDragOver(e)}
 							onDrop={e => this.onDrop(e,{curVal})}>
+
 					<div className="playlist-header">
 						<h3 className="playlist-name">{curVal}</h3>
 						<div className="playlist-song-count">{listLength} Songs</div>
 					</div>
+					
 					{playlistElements[curVal]}
 				</div>
 			);
@@ -102,7 +104,7 @@ class Collection extends Component {
 	};
 
 	render() {
-		const playlists = this.generateLists();
+		const playlists = this.generateCollectionLists();
 		const listLength = playlists.length;
 
 		return (

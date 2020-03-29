@@ -12,17 +12,10 @@ export const RadioMachineStyle = styled.div`
 		[deck] minmax(300px, 350px)
 		[speakerL] auto;
 	grid-template-rows:
-		[header] 60px
+		[Header] 40px
 		[radio] 500px
 		[collection] minmax(auto,150px)
-		[ColorModeSelector] 80px;
-
-	header {
-		grid-row: 1 / 1;
-		grid-column: 1 / span 3;
-
-		border: 1px solid #bfa520;
-	}
+		[Footer] 80px;
 
 
 	@media(min-width:${p=>p.theme.minWidthMdScreen}) {
@@ -31,10 +24,10 @@ export const RadioMachineStyle = styled.div`
 			[deck] 450px
 			[speakerL] auto;
 		grid-template-rows:
-			[header] 60px
+			[Header] 40px
 			[radio] 500px
 			[collection] auto
-			[footer] 40px;
+			[Footer] 40px;
 
 		footer {
 			grid-template-columns: repeat(4, 25fr);
@@ -52,9 +45,9 @@ export const RadioMachineStyle = styled.div`
 			[deck] 800px
 			[speakerL] auto;
 		grid-template-rows:
-			[header] 80px
+			[Header] 40px
 			[radio] 650px
 			[collection] auto
-			[footer] 60px;
+			[Footer] 60px;
 	}
 `;

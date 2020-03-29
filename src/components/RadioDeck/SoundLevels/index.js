@@ -33,16 +33,19 @@ class SoundLevels extends Component {
 
 	createLightBar(limitValue, userValue, indicatorType) {
 		const indicatorArray = [];
+		limitValue = limitValue+=1;
 		// user feedback will be needed in later iterations
 		if (userValue > limitValue) {userValue = limitValue};
-
 		for (let i=0; i<=limitValue; i++) {
 			let maxVal = i.toString();
-			if (i <= 9) {maxVal = i+"e"};
+			
+			if (i === 10) { maxVal = "9f" };
+			if (i <= 9) 	{ maxVal = i+"e" };
+
 			const inputColor = "#ff"+maxVal+"1d";
+
 			let newColor = LightenDarkenColor(inputColor, i);
 			if (i > userValue) {newColor = "transparent"};
-
 			const style = {"backgroundColor":newColor};
 
 			indicatorArray.unshift(
@@ -58,7 +61,7 @@ class SoundLevels extends Component {
 		};
 
 		return (
-			<IndicatorContainerStyle indicatorValue={limitValue+1}
+			<IndicatorContainerStyle indicatorValue={limitValue+=1}
 																indicatortype={indicatorType}>
 				<div className="indicator-bar">{indicatorArray}</div>
 				<div className="indicator-type">{indicatorType}</div>

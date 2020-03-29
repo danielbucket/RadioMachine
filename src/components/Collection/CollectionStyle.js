@@ -18,7 +18,6 @@ export const CollectionStyle = styled.div`
 	}
 
 	.playlist-header {
-		border: 1px solid red;
 		display: grid;
 		grid-template-columns:
 			[listName] auto

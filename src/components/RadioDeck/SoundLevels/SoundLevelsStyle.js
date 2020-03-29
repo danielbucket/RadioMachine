@@ -10,6 +10,7 @@ export const SoundLevelsStyle = styled.div`
 		[treble] 	1fr;
 `;
 
+// ${p=>console.log(p)}
 export const IndicatorContainerStyle = styled.div`
 	grid-row: ${p=>p.indicatorType};
 

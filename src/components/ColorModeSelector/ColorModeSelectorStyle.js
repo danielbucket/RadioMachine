@@ -1,16 +1,27 @@
 import styled from 'styled-components';
 
-export const ColorModeSelectorStyle = styled.button`
-	grid-row: ColorModeSelector;
-	grid-column: 1 / span 3;
 
+export const ColorModeSelectorStyle = styled.div`
+	grid-column: ColorModeSelector;
 
 	display: grid;
-	grid-template-columns: repeat(${p=>p.themeQuantity}, 1fr);
-	// grid-template-rows: repeat(2, 1fr);
+	grid-template-rows: repeat(${p=>p.themeQuantity+1}, 100%);
 
-  border: .1em solid ${p=>p.theme.borderColor};
-  border-radius: ${p=>p.theme.borderRadius};
-  font-size: 1.5em;
-  padding: 0;
+  overflow-y: scroll;
+  cursor: pointer;
+
+
+  .color-mode-selection {
+    text-align: center;
+  }
+
+  .drop-menu-cover {
+
+  }
+
+  .drop-menu-cover:hover {
+    
+  }
+
+
 `;
