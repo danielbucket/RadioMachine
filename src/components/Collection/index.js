@@ -7,7 +7,7 @@ class Collection extends Component {
 		super(props)
 		this.state = {
 			collection: collection,
-			newPlaylistName: 'New Playlist',
+			newPlaylistInput: 'New Playlist',
 		};
 
 		this.onDragOver = this.onDragOver.bind(this);
@@ -90,13 +90,13 @@ class Collection extends Component {
 			);
 		});
 
-		elementsList.push(
+		elementsList.unshift(
 			<div className="new-playlist-card"
 						key="newPlaylistCard"
 						onDragOver={e => this.onDragOver(e)}
 						onDrop={e => this.onDrop(e, {curVal:'newPlaylist'})}>
-				<input onChange={i => this.onChange('newPlaylistName',i)}
-								value={this.state.newPlaylistName}/>
+				<input onChange={i => this.onChange('newPlaylistInput',i)}
+								value={this.state.newPlaylistInput}/>
 			</div>
 		);
 
